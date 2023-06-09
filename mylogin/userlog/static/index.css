@@ -1,0 +1,31 @@
+a{
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+}
+.login{
+    height: 648px;
+    width: 100%;
+    background-image: url('banner.png');
+    color: cyan;
+    /* padding-top: 20%; */
+    /* background: aqua; */
+}
+.login .btn {
+    box-shadow: none;
+    width: 10%;
+    height: 40px;
+    background-color: #03A9F4;
+    color: #fff;
+    border-radius: 25px;
+    box-shadow: 3px 3px 3px #280f0f,
+        -3px -3px 3px rgb(12, 12, 12);
+    letter-spacing: 1.3px;
+}
+
+.login .btn:hover {
+    background-color: #039BE5;
+}
+.login img{
+    height: 200px;
+}

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data</title>
+</head>
+<body>
+    <h1>this is data</h1>
+    <h2>Table</h2>
+
+    <table>
+        {% for data in my_data %}
+        <tr>
+            <th>{{data.my_field}}</th>
+            <th>{{data.my_num}}</th>
+        </tr>
+        {% endfor %}
+    </table>
+
+</body>
+</html>

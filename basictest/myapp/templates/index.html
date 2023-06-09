@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
+</head>
+  <body>
+    <center><h1>Hello, world!</h1></center>
+    <div><a href="#" data-bs-toggle="modal" data-bs-target="#proform">product form</a>
+    </div>
+    
+    <div class="modal" tabindex="-1" id="proform">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Modal title</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <p>Modal body text goes here.</p>
+              {{form}}
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% comment %} {{form}} {% endcomment %}
+    <form action="get" action="https://google.com">
+      <input type="text">
+      <input type="submit">
+    </form>
+
+    <div>
+      <button id="populate">Populate Data</button>
+    </div>
+
+    <table>
+      <thead>
+        <tr>ID</tr>
+        <tr>Name</tr>
+        <tr>Username</tr>
+        <tr>Email</tr>
+      </thead>
+      <tbody id="result_area">
+        <tr>
+          <td>Please wait.....</td>
+        </tr>
+      </tbody>
+    </table>
+</body>
+
+<script>
+var xhr= new XMLHttpRequest();
+xhr.open("get", "https://jsonplaceholder.typicode.com/users");
+//xhr.send();
+
+document.getElementById("populate").addEventListener("click", function(){
+  //alert("clicked")
+  xhr.send();
+})
+
+xhr.onreadystatechange = function(){
+  if(xhr.readyState==4){
+    if(xhr.status==200){
+      //alert("success message");
+      //alert(xhr.responseText)
+      var result= JSON.parse(xhr.responseText);
+      //console.log(result);
+      var html_content = ""
+      for(i=0;i<result.length;++i){
+          var current_record = result[i];
+          console.log(current_record)
+          /*html_content = html_content+"<tr><td>"
+            +current_record.id+"</td><td>"
+              +current_record.name+"</td><td>"
+                +current_record.username+"</td><td>"
+                  +current_record.email+"</td></tr>";*/
+      }
+      document.getElementById("result_area").innerHTML = html_content
+    }
+    else{ 
+      alert("error")
+    }
+    console.log("response received");
+  }
+  console.log(xhr.readyState);
+}
+
+</script>
+
+</html>

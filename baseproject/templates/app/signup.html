@@ -1,0 +1,32 @@
+{% extends 'app/logbase.html' %}
+{% block content %}
+    {% comment %} signup colums and rows {% endcomment %}
+    <div>
+    <h3>Create your Amazon Account</h3><br>
+        <div>
+            <form method="POST" action="" >
+            {% csrf_token %}
+            <label for="username">Username</label><br>
+            {{form.username}}<br>
+
+            <label for="email">Email ID</label><br>
+            {{form.email}}<br>
+
+            <label for="password1">Enter a Password</label><br>
+            {{form.password1}}<br>
+
+            <label for="password2">Confirm your password</label><br>
+            {{form.password2}}<br>
+            <br>
+
+            <input type="submit" style="width:auto">
+
+            </form>
+        </div>
+        <br>
+        <p>Alredy Have an Amazon Account</p>
+        <a href="{% url 'login'%}"> Login</a>
+    </div>
+</div>
+    </div>
+{% endblock content %}
